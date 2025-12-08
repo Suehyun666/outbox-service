@@ -24,7 +24,7 @@ func (e *OutboxEntry) GetTopic() string {
 	switch e.EventType {
 	case "ACCOUNT_RESERVED", "ACCOUNT_FILLED", "ACCOUNT_RELEASED", "BALANCE_UPDATED":
 		return "account-events"
-	case "ORDER_PLACED", "ORDER_CREATED":
+	case "ORDER_PLACED", "ORDER_CREATED", "ORDER_CANCEL_REQUESTED":
 		return "order.created"
 	default:
 		return "unknown-events"
