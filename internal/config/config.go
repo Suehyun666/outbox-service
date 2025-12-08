@@ -14,9 +14,8 @@ type Config struct {
 func Load() *Config {
 	return &Config{
 		KafkaBrokers: strings.Split(getEnv("KAFKA_BROKERS", "localhost:9092"), ","),
-		// 기본값은 도련님의 요청하신 IP와 포트 반영
-		AccountDB: getEnv("ACCOUNT_DB_DSN", "postgres://user:pass@10.0.4.2:5432/account_db?sslmode=disable"),
-		OrderDB:   getEnv("ORDER_DB_DSN", "postgres://user:pass@10.0.4.2:5434/order_db?sslmode=disable"),
+		AccountDB:    getEnv("ACCOUNT_DB_DSN", "postgres://hts:hts@localhost:5432/hts_account?sslmode=disable"),
+		OrderDB:      getEnv("ORDER_DB_DSN", "postgres://hts:hts@localhost:5432/hts_order?sslmode=disable"),
 	}
 }
 
