@@ -13,13 +13,9 @@ WORKDIR /app
 # 소스 코드 복사
 COPY . .
 
-# 2. 삭제함: `myapp` 빌드 라인은 불필요하며 에러 유발 가능성 있음
-# RUN go build -mod=vendor -o myapp main.go  <-- 삭제!
-
 # 3. 실제 빌드 실행 (outbox-service)
 # vendor 모드 사용 시 -mod=vendor 옵션 추가 필요
-RUN CGO_ENABLED=0 GOOS=linux go build -mod=vendor -ldflags="-s -w" -o outbox-service cmd/worker/main.go
-
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o outbox-service cmd/worker/main.go
 # --------------------------------------------------------
 # [Stage 2] Runner
 # --------------------------------------------------------
